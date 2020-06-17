@@ -75,10 +75,14 @@ module.exports = {
     // Finds all homes saved in specific city
     findByCity: async (req, res) => {
         try {
-            const homes = await Home.find()
+            const cityId = req.params.cityId
+            const city = await City.findById(new mongoose.Types.ObjectId(cityId)).populate('homes')
+
+            const homes = city.homes
             return res.status(200).json(homes)
         }
         catch (error) {
+            console.log(error)
            return res.status(500).json(error)
         }
     }

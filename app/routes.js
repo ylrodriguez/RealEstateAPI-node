@@ -7,6 +7,7 @@ router.get('/',(req,res)=>res.send('ok'));
 // city routes
 router.get('/city/all',City.all);
 router.get('/city/find/:cityId',City.findById);
+router.get('/city/find/osm/:cityOsmId',City.findByOsmId);
 router.post('/city/create',City.create);
 // home routes
 router.get('/home/find/:cityId', Home.findByCity);

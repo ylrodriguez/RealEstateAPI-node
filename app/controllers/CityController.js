@@ -41,5 +41,18 @@ module.exports = {
             console.log(error)
             return res.status(500).json(error)
         }
+    },
+    // finds city by osmid
+    findByOsmId: async (req, res) => {
+        try {
+            const cityOsmId = req.params.cityOsmId
+            const city = await City.findOne({ 'osm_id': cityOsmId })
+
+            return res.status(200).json(city)
+        }
+        catch (error) {
+            console.log(error)
+            return res.status(500).json(error)
+        }
     }
 }
